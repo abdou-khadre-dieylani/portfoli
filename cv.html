@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Abdou Khadre Dieylani DIAGNE</title>
+  <!-- Google Fonts pour une typographie moderne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #0f172a;        /* Navy très sombre */
+      --accent: #2563eb;         /* Bleu royal moderne */
+      --accent-light: #eff6ff;   /* Bleu très clair pour fond badge */
+      --text: #334155;           /* Gris texte principal */
+      --text-muted: #64748b;     /* Gris secondaire */
+      --bg-body: #f1f5f9;
+      --bg-sidebar: #f8fafc;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.01);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: var(--bg-body);
+      padding: 30px 15px;
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .cv-container {
+      max-width: 960px;
+      margin: auto;
+      background: #ffffff;
+      display: flex;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* ---------------- Sidebar ---------------- */
+    .sidebar {
+      width: 32%;
+      background: var(--bg-sidebar);
+      padding: 35px 25px;
+      border-right: 1px solid var(--border);
+    }
+
+    .profile-wrapper {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .profile-img {
+      width: 130px;
+      height: 150px;
+      border-radius: 16px;
+      object-fit: cover;
+      margin: 0 auto;
+      display: block;
+      border: 3px solid #ffffff;
+      box-shadow: 0 8px 16px rgba(37, 99, 235, 0.15);
+    }
+
+    .sidebar-section {
+      margin-bottom: 28px;
+    }
+
+    .sidebar h3 {
+      font-size: 0.95rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar h3::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+    }
+
+    /* Contacts */
+    .contact-info p {
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      word-break: break-word;
+    }
+
+    /* Badge Skills */
+    .skills-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-badge {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    /* Listes simples sidebar */
+    .sidebar-list {
+      list-style: none;
+    }
+
+    .sidebar-list li {
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 14px;
+      color: var(--text);
+    }
+
+    .sidebar-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ---------------- Main Content ---------------- */
+    .main {
+      width: 68%;
+      padding: 40px 35px;
+    }
+
+    .header {
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .header .subtitle {
+      font-size: 1.05rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 4px;
+      margin-bottom: 12px;
+    }
+
+    .summary {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Sections principales */
+    .section-title {
+      font-size: 1.05rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 700;
+      margin: 25px 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Timeline pour les expériences & formations */
+    .timeline {
+      position: relative;
+      padding-left: 15px;
+      border-left: 2px solid var(--border);
+      margin-left: 5px;
+    }
+
+    .exp-item {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .exp-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Point de timeline */
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid var(--accent);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exp-role {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.98rem;
+    }
+
+    .exp-date {
+      font-size: 0.75rem;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .exp-company {
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    .exp-desc ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .exp-desc ul li {
+      font-size: 0.86rem;
+      color: var(--text);
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 15px;
+    }
+
+    .exp-desc ul li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      top: -1px;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .exp-desc ul li strong {
+      color: var(--primary);
+    }
+
+    /* ---------------- Impression PDF ---------------- */
+    @media print {
+      body {
+        padding: 0;
+        background: none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .cv-container {
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        max-width: 100%;
+        border: none;
+      }
+      .sidebar {
+        background: #f8fafc !important;
+      }
+      .skill-badge {
+        border: 1px solid #ccc !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cv-container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="profile-wrapper">
+      <img src="abdoukhadre.jpg" alt="Photo de profil" class="profile-img">
+    </div>
+    
+    <div class="sidebar-section">
+      <h3>Contact</h3>
+      <div class="contact-info">
+        <p>📍 Dakar, Golf Sud</p>
+        <p>📞 +221 77 393 35 34</p>
+        <p>✉️ djeylani98@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Compétences</h3>
+      <div class="skills-badges">
+        <span class="skill-badge">Flutter / Dart</span>
+        <span class="skill-badge">Vue.js</span>
+        <span class="skill-badge">Laravel</span>
+        <span class="skill-badge">React</span>
+        <span class="skill-badge">Angular</span>
+        <span class="skill-badge">Node.js</span>
+        <span class="skill-badge">API RESTful</span>
+        <span class="skill-badge">Socket.io</span>
+        <span class="skill-badge">WordPress</span>
+        <span class="skill-badge">Mobile Money</span>
+        <span class="skill-badge">Architecture & Tests</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Langues</h3>
+      <ul class="sidebar-list">
+        <li><strong>Wolof :</strong> Maternelle</li>
+        <li><strong>Français :</strong> Courant</li>
+        <li><strong>Anglais :</strong> Intermédiaire</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Centres d'intérêt</h3>
+      <ul class="sidebar-list">
+        <li>Échecs & Stratégie</li>
+        <li>Hackathons & Open-Source</li>
+        <li>Veille Technologique</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <header class="header">
+      <h1>Abdou Khadre Dieylani DIAGNE</h1>
+      <div class="subtitle">Développeur Full-Stack Mobile & Web</div>
+      <p class="summary">
+        Développeur expérimenté, spécialisé dans la conception et l'optimisation d'applications web et mobiles modernes. Expertise en temps réel, architecture logicielle et intégration de systèmes performants.
+      </p>
+    </header>
+
+    <section>
+      <h3 class="section-title">Expériences Professionnelles</h3>
+      
+      <div class="timeline">
+        
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Développeur Full-Stack Mobile & Web</span>
+            <span class="exp-date">Mar 2026 – Présent</span>
+          </div>
+          <div class="exp-company">2SI — Dakar | CDD</div>
+          <div class="exp-desc">
+            <ul>
+              <li><strong>Conception et développement global :</strong> Écosystème Sentouki (applications mobile et web) dédié à la gestion de services et de réservations de voyages en ligne.</li>
+              <li><strong>Développement multiplateforme :</strong> Architecture et développement de l'application mobile <em>cross-platform</em> (Flutter / Dart) et de la plateforme web (Vue.js).</li>
+              <li><strong>Gestion du temps réel &amp; résilience réseau :</strong> Connexions Socket.io avec gestion dynamique du statut réseau et mécanismes de reconnexion automatique.</li>
+              <li><strong>Fonctionnalités métier &amp; réservations :</strong> Module de suivi et de gestion des réservations côté client et administration.</li>
+              <li><strong>Optimisation &amp; maintenance :</strong> Refactorisation continue, débogage des logs serveurs/clients et amélioration des performances d'affichage.</li>
+              <li><strong>Intégration back-end :</strong> Interfaçage API REST et bases de données pour assurer la synchronisation en temps réel.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Développeur Full-Stack Mobile & Web</span>
+            <span class="exp-date">Déc 2025 – Fév 2026</span>
+          </div>
+          <div class="exp-company">EXPLORER — Dakar | Stage</div>
+          <div class="exp-desc">
+            <ul>
+              <li><strong>Conception et développement global :</strong> Écosystème Sentouki (applications mobile et web) dédié à la gestion de services et de réservations de voyages en ligne.</li>
+              <li><strong>Expertise technique :</strong> Accompagnement des équipes sur les phases de conception/développement et résolution de problématiques complexes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Développeur Freelance</span>
+            <span class="exp-date">Mai 2025 – Oct 2025</span>
+          </div>
+          <div class="exp-company">SAM AK SUXALI SUNUGAL — Dakar</div>
+          <div class="exp-desc">
+            <ul>
+              <li><strong>Conception &amp; Intégration Web :</strong> Création du site officiel WordPress moderne, responsive et optimisé pour le mobile.</li>
+              <li><strong>Gestion des Adhésions :</strong> Implémentation du système de collecte de données et d'inscription pour les membres.</li>
+              <li><strong>Paiements Locaux :</strong> Intégration de modules de paiement sécurisés adaptés aux solutions locales (Wave, Orange Money).</li>
+              <li><strong>Performance &amp; Sécurité :</strong> Configuration du cache pour bas débit, renforcement de la sécurité et gestion de l'hébergement.</li>
+              <li><strong>Gestion des Intrants Agricoles (MASAE) :</strong> Déploiement du module de gestion des intrants pour le suivi des producteurs du Sénégal.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Développeur (Stage)</span>
+            <span class="exp-date">Nov 2023 – Août 2024</span>
+          </div>
+          <div class="exp-company">Sénégal Numérique (ADIE) — Dakar</div>
+          <div class="exp-desc">
+            <ul>
+              <li><strong>Gestion des Partenariats :</strong> Digitalisation et centralisation du suivi des relations et accords partenaires.</li>
+              <li><strong>Prise de Rendez-vous :</strong> Solution web/mobile d'automatisation et de planification d'agendas.</li>
+              <li><strong>Portail Plainte :</strong> Intégration globale du portail citoyen.</li>
+              <li><strong>Car-Monitoring (Télématique) :</strong> Outil de géolocalisation et de suivi de flotte en temps réel (projet valorisé lors de la soutenance de Licence).</li>
+              <li><strong>Surveillance Médicale :</strong> Système sécurisé de suivi et de collecte de données de santé (projet académique).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Développeur (Stage)</span>
+            <span class="exp-date">Nov 2022 – Août 2023</span>
+          </div>
+          <div class="exp-company">Able Growth Consulting — Dakar</div>
+          <div class="exp-desc">
+            <ul>
+              <li><strong>Cartographie &amp; Benchmark :</strong> Recensement et analyse comparative d'un panel de 40 entreprises IT.</li>
+              <li><strong>Audit Web &amp; Qualité :</strong> Évaluation technique, ergonomique (UX/UI) et fonctionnelle des plateformes.</li>
+              <li><strong>Gestion des Anomalies :</strong> Détection, documentation et signalement des bugs et ruptures d'expérience utilisateur.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section-title">Formation</h3>
+      <div class="timeline">
+        
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Attestation IA</span>
+            <span class="exp-date">Avril 2024 – Juin 2026</span>
+          </div>
+          <div class="exp-company">FORCE-N — Dakar</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Attestation Informatique & Internet</span>
+            <span class="exp-date">Mai 2024 – Juillet 2026</span>
+          </div>
+          <div class="exp-company">FORCE-N — Dakar</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Licence 3 - Génie Logiciel (Mention Très Bien)</span>
+            <span class="exp-date">Octobre 2024</span>
+          </div>
+          <div class="exp-company">Institut Polytechnique de Dakar</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Baccalauréat S2</span>
+            <span class="exp-date">Juillet 2020</span>
+          </div>
+          <div class="exp-company">Lycée Banque Islamique</div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

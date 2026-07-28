@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Abdou Khadre Dieylani DIAGNE | Développeur Full-Stack</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #0f172a;        /* Slate 900 */
+      --bg-card: #1e293b;        /* Slate 800 */
+      --bg-card-hover: #334155;  /* Slate 700 */
+      --accent-blue: #3b82f6;    /* Blue 500 */
+      --accent-cyan: #06b6d4;    /* Cyan 500 */
+      --text-main: #f8fafc;      /* Slate 50 */
+      --text-muted: #94a3b8;     /* Slate 400 */
+      --border: #334155;
+      --radius: 16px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent-blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-blue);
+    }
+
+    /* Layout Sections */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 100px 20px 60px;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .badge-hero {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--accent-blue);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      letter-spacing: -1px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Section Titles */
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 5px;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-4px);
+    }
+
+    .skill-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: var(--accent-cyan);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-5px);
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .project-tech span {
+      background: rgba(6, 182, 212, 0.1);
+      color: var(--accent-cyan);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .contact-details div {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent-blue);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .contact-container { grid-template-columns: 1fr; }
+      section { padding-top: 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <div class="logo">Abdou Khadre <span>.dev</span></div>
+      <ul class="nav-links">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="about">
+    <div class="badge-hero">📍 Dakar, Sénégal — Disponible</div>
+    <h1>Abdou Khadre Dieylani <span class="gradient-text">DIAGNE</span></h1>
+    <p>
+      Développeur Full-Stack Mobile & Web spécialisé dans la conception d'applications haute performance, la gestion du temps réel (Socket.io) et l'architecture logicielle (Flutter, Vue.js, Laravel).
+    </p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn btn-primary">Découvrir mes projets</a>
+      <a href="#contact" class="btn btn-secondary">Me contacter</a>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="section-header">
+      <h2>Compétences & Stack Technique</h2>
+      <p>Les technologies et outils que j'utilise au quotidien pour concevoir des applications web et mobiles.</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Mobile & Cross-Platform</h3>
+        <div class="skill-tags">
+          <span class="tag">Flutter</span>
+          <span class="tag">Dart</span>
+          <span class="tag">Android / iOS</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Front-End Web</h3>
+        <div class="skill-tags">
+          <span class="tag">Vue.js</span>
+          <span class="tag">React</span>
+          <span class="tag">Angular</span>
+          <span class="tag">WordPress</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Back-End & API</h3>
+        <div class="skill-tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">Laravel</span>
+          <span class="tag">API RESTful</span>
+          <span class="tag">Socket.io</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Services & Outils</h3>
+        <div class="skill-tags">
+          <span class="tag">Mobile Money (Wave, OM)</span>
+          <span class="tag">Git & CI/CD</span>
+          <span class="tag">Tests & Refactoring</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="section-header">
+      <h2>Projets Récents & Réalisations</h2>
+      <p>Une sélection de projets applicatifs stratégiques sur lesquels j'ai travaillé.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Projet 1 -->
+      <div class="project-card">
+        <div>
+          <div class="project-tag">Écosystème Mobile & Web</div>
+          <h3>Sentouki</h3>
+          <p>
+            Plateforme complète de réservation de voyages et de gestion de services en ligne. Implémentation du temps réel via Socket.io avec gestion avancée du statut réseau et reconnexion automatique.
+          </p>
+        </div>
+        <div class="project-tech">
+          <span>Flutter</span>
+          <span>Vue.js</span>
+          <span>Socket.io</span>
+          <span>API REST</span>
+        </div>
+      </div>
+
+      <!-- Projet 2 -->
+      <div class="project-card">
+        <div>
+          <div class="project-tag">Télématique & IoT</div>
+          <h3>Système de Car-Monitoring</h3>
+          <p>
+            Solution de géolocalisation et de suivi de flotte de véhicules en temps réel. Projet valorisé lors de la soutenance de Licence 3 en Génie Logiciel.
+          </p>
+        </div>
+        <div class="project-tech">
+          <span>Géolocalisation</span>
+          <span>Temps Réel</span>
+          <span>Web & Mobile</span>
+        </div>
+      </div>
+
+      <!-- Projet 3 -->
+      <div class="project-card">
+        <div>
+          <div class="project-tag">Plateforme Citoyenne & Agricole</div>
+          <h3>Sam Ak Suxali Sunugal & MASAE</h3>
+          <p>
+            Site officiel du mouvement citoyen avec intégration de paiement local (Wave, Orange Money) et module de gestion des intrants agricoles pour les producteurs du Sénégal.
+          </p>
+        </div>
+        <div class="project-tech">
+          <span>WordPress</span>
+          <span>Mobile Money</span>
+          <span>Optimisation Web</span>
+        </div>
+      </div>
+
+      <!-- Projet 4 -->
+      <div class="project-card">
+        <div>
+          <div class="project-tag">Solutions d'Entreprise</div>
+          <h3>Partenariats & Prise de Rendez-vous</h3>
+          <p>
+            Centralisation et digitalisation du suivi des partenariats et solution automatisée de planification d'agendas développée pour Sénégal Numérique (ADIE).
+          </p>
+        </div>
+        <div class="project-tech">
+          <span>Full-Stack</span>
+          <span>Gestion de Process</span>
+          <span>API</span>
+        </div>
+      </div>
+
+      <!-- Projet 5 -->
+      <div class="project-card">
+        <div>
+          <div class="project-tag">Santé & Collecte de Données</div>
+          <h3>Surveillance Médicale</h3>
+          <p>
+            Système sécurisé pour le suivi médical et la collecte confidentielle de données de santé au niveau académique et applicatif.
+          </p>
+        </div>
+        <div class="project-tech">
+          <span>Sécurité</span>
+          <span>Base de données</span>
+          <span>Web</span>
+        </div>
+      </div>
+
+      <!-- Projet 6 -->
+      <div class="project-card">
+        <div>
+          <div class="project-tag">Audit & Qualité</div>
+          <h3>Benchmark IT & Audit Web</h3>
+          <p>
+            Analyse comparative de 40 entreprises du secteur IT, évaluation ergonomique (UX/UI) et fonctionnelle, et rapport d'optimisation.
+          </p>
+        </div>
+        <div class="project-tech">
+          <span>Audit UX/UI</span>
+          <span>Qualité Logicielle</span>
+          <span>Benchmark</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Discutons de votre projet</h3>
+        <p>
+          Je suis disponible pour des opportunités en développement d'applications mobile, web et des projets sur mesure.
+        </p>
+        <div class="contact-details">
+          <div>📍 Dakar, Golf Sud, Sénégal</div>
+          <div>📞 +221 77 393 35 34</div>
+          <div>✉️ djeylani98@gmail.com</div>
+        </div>
+      </div>
+
+      <form onsubmit="event.preventDefault(); alert('Message envoyé !');">
+        <div class="form-group">
+          <input type="text" placeholder="Votre Nom" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Votre Email" required>
+        </div>
+        <div class="form-group">
+          <textarea rows="4" placeholder="Votre Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">Envoyer le message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Abdou Khadre Dieylani DIAGNE. Tous droits réservés.</p>
+  </footer>
+
+</body>
+</html>
