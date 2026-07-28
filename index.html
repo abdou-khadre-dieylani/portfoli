@@ -57,6 +57,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 18px 20px;
+      position: relative;
     }
 
     .logo {
@@ -86,6 +87,16 @@
 
     .nav-links a:hover {
       color: var(--accent-blue);
+    }
+
+    /* Bouton Hamburger Mobile */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.8rem;
+      cursor: pointer;
     }
 
     /* Layout Sections */
@@ -353,11 +364,37 @@
       font-size: 0.85rem;
     }
 
-    /* Responsive */
+    /* Responsive Mobile */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .contact-container { grid-template-columns: 1fr; }
-      section { padding-top: 80px; }
+      .menu-toggle {
+        display: block; /* Afficher le bouton menu */
+      }
+
+      .nav-links {
+        display: none; /* Masqué par défaut */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(12px);
+        padding: 20px;
+        border-bottom: 1px solid var(--border);
+        gap: 15px;
+      }
+
+      .nav-links.active {
+        display: flex; /* Affiché quand on clique */
+      }
+
+      .contact-container { 
+        grid-template-columns: 1fr; 
+      }
+
+      section { 
+        padding-top: 80px; 
+      }
     }
   </style>
 </head>
@@ -367,7 +404,8 @@
   <header>
     <nav>
       <div class="logo">Abdou Khadre <span>.dev</span></div>
-      <ul class="nav-links">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="#about">À propos</a></li>
         <li><a href="#skills">Compétences</a></li>
         <li><a href="#projects">Projets</a></li>
@@ -562,17 +600,17 @@
       </div>
 
       <form action="https://formspree.io/f/xrenjyyb" method="POST">
-  <div class="form-group">
-    <input type="text" name="name" placeholder="Votre Nom" required>
-  </div>
-  <div class="form-group">
-    <input type="email" name="email" placeholder="Votre Email" required>
-  </div>
-  <div class="form-group">
-    <textarea name="message" rows="4" placeholder="Votre Message" required></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">Envoyer le message</button>
-</form>
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Votre Nom" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Votre Email" required>
+        </div>
+        <div class="form-group">
+          <textarea name="message" rows="4" placeholder="Votre Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">Envoyer le message</button>
+      </form>
     </div>
   </section>
 
@@ -580,6 +618,24 @@
   <footer>
     <p>© 2026 Abdou Khadre Dieylani DIAGNE. Tous droits réservés.</p>
   </footer>
+
+  <!-- Script JS pour la gestion du menu mobile -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    // Basculer l'affichage du menu au clic sur l'icône hamburger
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Fermer le menu automatiquement au clic sur un lien
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
